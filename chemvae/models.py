@@ -4,7 +4,7 @@ from keras.layers.convolutional import Convolution1D
 from keras.layers.recurrent import GRU
 from keras.layers.normalization import BatchNormalization
 from keras.models import load_model
-from tensorkeras.keras import backend as K
+from tensorflow.keras import backend as K
 from keras.models import Model
 from keras.layers.merge import Concatenate
 from .tgru_k2_gpu import TerminalGRU
