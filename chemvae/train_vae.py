@@ -20,7 +20,7 @@ config.gpu_options.allow_growth = True
 import yaml
 import time
 import os
-from keras import backend as K
+from tensorflow.keras import backend as K
 from keras.models import Model
 from keras.optimizers import SGD, Adam, RMSprop
 from . import hyperparameters
