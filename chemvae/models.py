@@ -1,6 +1,6 @@
 from keras.layers import Input, Lambda
 from keras.layers.core import Dense, Flatten, RepeatVector, Dropout
-from keras.layers.convolutional import Convolution1D
+from tensorflow.keras.layers import Conv1D
 from keras.layers.recurrent import GRU
 from keras.layers.normalization import BatchNormalization
 from keras.models import load_model
@@ -19,7 +19,7 @@ def encoder_model(params):
         'NCHARS']), name='input_molecule_smi')
 
     # Convolution layers
-    x = Convolution1D(int(params['conv_dim_depth'] *
+    x = Conv1D(int(params['conv_dim_depth'] *
                           params['conv_d_growth_factor']),
                       int(params['conv_dim_width'] *
                           params['conv_w_growth_factor']),
@@ -29,7 +29,7 @@ def encoder_model(params):
         x = BatchNormalization(axis=-1, name="encoder_norm0")(x)
 
     for j in range(1, params['conv_depth'] - 1):
-        x = Convolution1D(int(params['conv_dim_depth'] *
+        x = Conv1D(int(params['conv_dim_depth'] *
                               params['conv_d_growth_factor'] ** (j)),
                           int(params['conv_dim_width'] *
                               params['conv_w_growth_factor'] ** (j)),
